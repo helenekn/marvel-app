@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./charInfo.scss";
 import useMarvelService from "../../services/MarvelService";
@@ -74,8 +75,10 @@ const View = ({ char }) => {
         {comics.length > 0 ? null : "There is no commics with this character"}
         {comics.map((item, i) => {
           if (i > 9) return;
+          const comicId = item.resourceURI.substring(43);
           return (
-            <li
+            <Link
+              to={`/comics/${comicId}`}
               key={i}
               className="char__comics-item"
               style={
@@ -86,7 +89,7 @@ const View = ({ char }) => {
               }
             >
               {item.name}
-            </li>
+            </Link>
           );
         })}
       </ul>
