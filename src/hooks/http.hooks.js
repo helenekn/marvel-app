@@ -12,13 +12,16 @@ export const useHttp = () => {
       headers = { "Content-Type": "application/json" }
     ) => {
       setLoading(true);
+
       try {
         const response = await fetch(url, { method, body, headers });
 
         if (!response.ok) {
           throw new Error(`Could not fetch ${url}, status: ${response.status}`);
         }
+
         const data = await response.json();
+
         setLoading(false);
         return data;
       } catch (e) {
@@ -30,7 +33,7 @@ export const useHttp = () => {
     []
   );
 
-  const clearError = useCallback(() => setError(null));
+  const clearError = useCallback(() => setError(null), []);
 
   return { loading, request, error, clearError };
 };
