@@ -60,3 +60,18 @@ const View = ({ comic }) => {
 };
 
 export default SingleComicPage;
+
+const a = {
+  c: [],
+};
+a["c"][".g"] = [[1], [2]];
+
+console.log(a);
+console.log(a["c"]);
+
+const b = JSON.stringify(a);
+console.log(b);
+
+console.log(Array.isArray(a["c"]));
+console.log(a["c"][0]);
+console.log(JSON.parse(b));
